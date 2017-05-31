@@ -28,6 +28,15 @@ namespace App1
         public BlankPage1()
         {
             this.InitializeComponent();
+            
+        }
+        Window.Current.SizeChanged += Current_SizeChanged;
+
+            void Current_SizeChanged(object sender, Windows.UI.Core.WindowSizeChangedEventArgs e)
+        {
+            // Get the new view state
+            // Add: using Windows.UI.ViewManagement;
+            string CurrentViewState = ApplicationView.GetForCurrentView().Orientation.ToString();
         }
 
         /// <summary>
@@ -48,6 +57,12 @@ namespace App1
                 MessageDialog msg = new MessageDialog("Correct!");
                 await msg.ShowAsync();
                 Frame.Navigate(typeof(PivotPage));
+            }
+            else
+            {
+                MessageDialog msg = new MessageDialog("Wrong login and/or password!");
+                await msg.ShowAsync();
+                Application.Current.Exit();
             }
         }
 
