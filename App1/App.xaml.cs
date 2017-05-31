@@ -140,7 +140,5 @@ namespace App1
             await SuspensionManager.SaveAsync();
             deferral.Complete();
         }
-
-        
     }
 }
