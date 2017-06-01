@@ -9,9 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBox x:Name="login_textbox" HorizontalAlignment="Left" Margin="72,146,0,0" TextWrapping="Wrap" Text="login" VerticalAlignment="Top" Width="249" TextChanged="TextBox_TextChanged"/>
-        <TextBox x:Name="password_textbox" HorizontalAlignment="Left" Margin="72,234,0,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="249" TextChanged="TextBox_TextChanged_1"/>
+        <TextBox x:Name="login_textbox" HorizontalAlignment="Left" Margin="72,146,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="249" TextChanged="TextBox_TextChanged" PlaceholderText="Login"/>
         <Button Content="Enter&#xD;&#xA;" HorizontalAlignment="Left" Margin="93,315,0,0" VerticalAlignment="Top" Width="200" Click="Button_Click"/>
+        <PasswordBox x:Name="password_textbox" HorizontalAlignment="Left" Margin="72,231,0,0" VerticalAlignment="Top" Width="249" PlaceholderText="Password" Password="password"/>
 
     </Grid>
 </Page>

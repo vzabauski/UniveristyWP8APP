@@ -41,11 +41,9 @@ namespace App1
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
-            string login = login_textbox.Text;
-            string password = password_textbox.Text;
-            if (password == real_password && login == real_login)
+            if (real_password == password_textbox.Password && real_login == login_textbox.Text)
             {
-                string MessageString = String.Format("You have signed in as {0}",login_textbox);
+                string MessageString = String.Format("You have signed in as '{0}'", login_textbox.Text);
                 MessageDialog msg = new MessageDialog(MessageString);
                 await msg.ShowAsync();
                 Frame.Navigate(typeof(PivotPage));
