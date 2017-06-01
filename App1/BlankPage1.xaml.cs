@@ -45,9 +45,22 @@ namespace App1
             string password = password_textbox.Text;
             if (password == real_password && login == real_login)
             {
-                MessageDialog msg = new MessageDialog("Correct!");
+                string MessageString = String.Format("You have signed in as {0}",login_textbox);
+                MessageDialog msg = new MessageDialog(MessageString);
                 await msg.ShowAsync();
                 Frame.Navigate(typeof(PivotPage));
+            }
+            else
+            {
+                MessageDialog msg = new MessageDialog("Wrong login or password");
+                msg.Commands.Add(new UICommand("Try again"));
+                msg.Commands.Add(new UICommand("Exit"));
+                var result = await msg.ShowAsync();
+                if (result.Label == "Exit")
+                {
+                    Application.Current.Exit();
+                }
+
             }
         }
 
