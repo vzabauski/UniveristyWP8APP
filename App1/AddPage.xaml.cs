@@ -49,10 +49,11 @@ namespace UserDB
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
+            
             if (!String.IsNullOrWhiteSpace(loginBox.Text) && !String.IsNullOrWhiteSpace(passwordBox.Text)
-                && !String.IsNullOrWhiteSpace(roleBox.Text))
+                && (((ComboBoxItem)ComboBox1.SelectedValue != null)))
             {
-                User user = new User { Login = loginBox.Text, Pass = passwordBox.Text, Role = roleBox.Text };
+                User user = new User { Login = loginBox.Text, Pass = passwordBox.Text, Role = ((ComboBoxItem)ComboBox1.SelectedItem).Content.ToString() };
                 App.database.Insert(user);
                 if (Frame.CanGoBack)
                     Frame.GoBack();

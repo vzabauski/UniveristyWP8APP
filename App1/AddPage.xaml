@@ -13,7 +13,10 @@
             <TextBlock Text="New user" Style="{ThemeResource HeaderTextBlockStyle}" />
             <TextBox x:Name="loginBox" PlaceholderText="Login" />
             <TextBox x:Name="passwordBox" PlaceholderText="Password" />
-            <TextBox x:Name="roleBox" PlaceholderText="Role" />
+            <ComboBox x:Name="ComboBox1" PlaceholderText="User role">
+                <ComboBoxItem Content="user"/>
+                <ComboBoxItem Content="admin"/>
+            </ComboBox>
             <Button x:Name="addButton" Content="Add" Click="addButton_Click" />
             <Button x:Name="backButton" Content="Back" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,291,0" Click="backButton_Click"/>
         </StackPanel>

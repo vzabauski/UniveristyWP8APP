@@ -27,7 +27,6 @@ namespace UserDB
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            var output = App.database.GetUsers();
             usersList.ItemsSource = App.database.GetUsers();
         }
 

@@ -32,6 +32,7 @@ namespace UserDB
 
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            var output = App.database.UserLogin(login_textbox.Text);
             if (real_password == password_textbox.Password && real_login == login_textbox.Text)
             {
                 string MessageString = String.Format("You have signed in as '{0}'", login_textbox.Text);

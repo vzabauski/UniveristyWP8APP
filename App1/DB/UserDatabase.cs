@@ -12,10 +12,12 @@ namespace UserDB
     public class UserDatabase
     {
         public SQLiteConnection con;
+
         public UserDatabase(string dbname)
         {
             this.con = new SQLiteConnection(dbname);
         }
+
         public void CreateTable()
         {
             string sql = @"CREATE TABLE IF NOT EXISTS
@@ -79,13 +81,13 @@ namespace UserDB
             return user;
         }
 
-        public User UserLogin(long id)
+        public User UserLogin(string login)
         {
             User user = null;
 
             using (var statement = con.Prepare("SELECT Id, login, pass, role FROM Users WHERE login=?"))
             {
-                statement.Bind(1, id);
+                statement.Bind(1, login);
                 if (statement.Step() == SQLiteResult.ROW)
                 {
                     user = new User();
