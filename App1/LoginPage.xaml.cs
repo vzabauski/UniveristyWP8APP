@@ -14,13 +14,9 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Popups;
 using Windows.UI.Xaml.Navigation;
 
-// Документацию по шаблону элемента пустой страницы см. по адресу http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace UserDB
 {
-    /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-    /// </summary>
     public sealed partial class LoginPage : Page
     {
         public string real_password="password";
@@ -30,11 +26,6 @@ namespace UserDB
             this.InitializeComponent();
         }
 
-        /// <summary>
-        /// Вызывается перед отображением этой страницы во фрейме.
-        /// </summary>
-        /// <param name="e">Данные события, описывающие, каким образом была достигнута эта страница.
-        /// Этот параметр обычно используется для настройки страницы.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
         }
