@@ -63,6 +63,26 @@ namespace UserDB
         {
             User user = null;
 
+            using (var statement = con.Prepare("SELECT Id, login, pass, role FROM Users WHERE id=?"))
+            {
+                statement.Bind(1, id);
+                if (statement.Step() == SQLiteResult.ROW)
+                {
+                    user = new User();
+                    user.Id = (long)statement[0];
+                    user.Login = (string)statement[1];
+                    user.Pass = (string)statement[2];
+                    user.Role = (string)statement[3];
+                }
+            }
+
+            return user;
+        }
+
+        public User UserLogin(long id)
+        {
+            User user = null;
+
             using (var statement = con.Prepare("SELECT Id, login, pass, role FROM Users WHERE login=?"))
             {
                 statement.Bind(1, id);
