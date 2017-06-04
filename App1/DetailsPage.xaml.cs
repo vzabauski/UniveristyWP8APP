@@ -21,9 +21,10 @@ namespace App1
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddPage : Page
+    public sealed partial class DetailsPage : Page
     {
-        public AddPage()
+        public long Id { get; set; }
+        public DetailsPage()
         {
             this.InitializeComponent();
             HardwareButtons.BackPressed += HardwareButtons_BackPressed;
@@ -45,23 +46,28 @@ namespace App1
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-        }
-
-        private void addButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (!String.IsNullOrWhiteSpace(loginBox.Text) && !String.IsNullOrWhiteSpace(passwordBox.Text)
-                && !String.IsNullOrWhiteSpace(roleBox.Text))
+            if (e.Parameter != null)
             {
-                User user = new User { Login = loginBox.Text, Pass = passwordBox.Text, Role = roleBox.Text };
-                App.database.Insert(user);
-                if (Frame.CanGoBack)
-                    Frame.GoBack();
+                long id = (long)e.Parameter;
+                User u = App.database.GetUser(id);
+                if (u != null)
+                {
+                    loginBlock.Text = u.Login;
+                    passwordBlock.Text = u.Pass;
+                    roleBlock.Text = u.Role;
+                    deleteButton.IsEnabled = true;
+                    Id = id;
+                }
             }
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.GoBack();
+            Button button = (Button)sender;
+            if (button.Name == "deleteButton")
+                App.database.Delete(Id);
+            if (Frame.CanGoBack)
+                Frame.GoBack();
         }
     }
 }

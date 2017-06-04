@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="App1.DetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App1"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="detailsGrid">
+        <StackPanel>
+            <TextBlock Text="User Info" Style="{ThemeResource HeaderTextBlockStyle}" />
+            <TextBlock Text="Login" FontSize="21" Foreground="Silver" />
+            <TextBlock x:Name="loginBlock" FontSize="25" />
+            <TextBlock Text="Password" FontSize="21" Foreground="Silver"/>
+            <TextBlock x:Name="passwordBlock" FontSize="25" />
+            <TextBlock Text="Role" FontSize="21" Foreground="Silver"/>
+            <TextBlock x:Name="roleBlock" FontSize="25" />
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Back" Click="Button_Click" />
+                <Button x:Name="deleteButton" Content="Delete" Click="Button_Click" IsEnabled="False" />
+            </StackPanel>
+
+        </StackPanel>
+    </Grid>
+</Page>

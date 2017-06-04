@@ -44,7 +44,7 @@ namespace App1
         {
             ObservableCollection<User> users = new ObservableCollection<User>();
 
-            using (var statement = con.Prepare("SELECT Id, Name, Author, Year FROM Users"))
+            using (var statement = con.Prepare("SELECT Id, login, pass, role FROM Users"))
             {
                 while (statement.Step() == SQLiteResult.ROW)
                 {
@@ -63,7 +63,7 @@ namespace App1
         {
             User user = null;
 
-            using (var statement = con.Prepare("SELECT Id, Login, Pass, Role FROM Users WHERE Login=?"))
+            using (var statement = con.Prepare("SELECT Id, login, pass, role FROM Users WHERE login=?"))
             {
                 statement.Bind(1, id);
                 if (statement.Step() == SQLiteResult.ROW)

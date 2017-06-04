@@ -15,6 +15,7 @@
             <TextBox x:Name="passwordBox" PlaceholderText="Password" />
             <TextBox x:Name="roleBox" PlaceholderText="Role" />
             <Button x:Name="addButton" Content="Add" Click="addButton_Click" />
+            <Button x:Name="backButton" Content="Back" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,291,0" Click="backButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

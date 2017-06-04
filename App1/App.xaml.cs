@@ -111,7 +111,7 @@ namespace App1
                 // Если стек навигации не восстанавливается для перехода к первой странице,
                 // настройка новой страницы путем передачи необходимой информации в качестве параметра
                 // навигации.
-                if (!rootFrame.Navigate(typeof(BlankPage1), e.Arguments))
+                if (!rootFrame.Navigate(typeof(LoginPage), e.Arguments))
                 {
                     throw new Exception("Failed to create initial page");
                 }

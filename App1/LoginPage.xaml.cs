@@ -21,11 +21,11 @@ namespace App1
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
     /// </summary>
-    public sealed partial class BlankPage1 : Page
+    public sealed partial class LoginPage : Page
     {
         public string real_password="password";
         public string real_login = "login";
-        public BlankPage1()
+        public LoginPage()
         {
             this.InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace App1
                 string MessageString = String.Format("You have signed in as '{0}'", login_textbox.Text);
                 MessageDialog msg = new MessageDialog(MessageString);
                 await msg.ShowAsync();
-                Frame.Navigate(typeof(PivotPage));
+                Frame.Navigate(typeof(MainPage));
             }
             else
             {

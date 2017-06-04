@@ -5,7 +5,6 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -21,21 +20,11 @@ namespace App1
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddPage : Page
+    public sealed partial class MainPage : Page
     {
-        public AddPage()
+        public MainPage()
         {
             this.InitializeComponent();
-            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-        }
-
-        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
-        {
-            if (Frame.CanGoBack)
-            {
-                e.Handled = true;
-                Frame.GoBack();
-            }
         }
 
         /// <summary>
@@ -45,23 +34,18 @@ namespace App1
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            userList.ItemsSource = App.database.GetUsers();
         }
 
-        private void addButton_Click(object sender, RoutedEventArgs e)
+        private void ItemView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!String.IsNullOrWhiteSpace(loginBox.Text) && !String.IsNullOrWhiteSpace(passwordBox.Text)
-                && !String.IsNullOrWhiteSpace(roleBox.Text))
-            {
-                User user = new User { Login = loginBox.Text, Pass = passwordBox.Text, Role = roleBox.Text };
-                App.database.Insert(user);
-                if (Frame.CanGoBack)
-                    Frame.GoBack();
-            }
+            var itemId = ((User)e.ClickedItem).Id;
+            Frame.Navigate(typeof(DetailsPage), itemId);
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void createButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.GoBack();
+            Frame.Navigate(typeof(AddPage));
         }
     }
 }
