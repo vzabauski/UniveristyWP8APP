@@ -23,7 +23,6 @@ namespace App1
     /// </summary>
     public sealed partial class DetailsPage : Page
     {
-        public long Id { get; set; }
         public DetailsPage()
         {
             this.InitializeComponent();
@@ -44,6 +43,8 @@ namespace App1
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
+        public long Id { get; set; }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter != null)

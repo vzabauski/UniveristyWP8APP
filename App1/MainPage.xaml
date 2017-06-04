@@ -7,20 +7,20 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    <StackPanel Margin="0,0.333,0,-0.333" Orientation="Vertical">
-        <Grid Height="640">
-            <TextBlock Text="Users" Style="{ThemeResource HeaderTextBlockStyle}" Margin="0,0,0,567" />
-            <ListView x:Name="userList" IsItemClickEnabled="True"
-                ItemClick="ItemView_ItemClick" Margin="0,115,0,525">
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Users" Style="{ThemeResource HeaderTextBlockStyle}" />
+            <ListView x:Name="usersList" IsItemClickEnabled="True"
+                      ItemClick="ItemView_ItemClick">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel>
-                            <TextBlock Text="{Binding Name}"  FontSize="26" />
+                            <TextBlock Text="{Binding Login}"  FontSize="26" />
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            <Button x:Name="createButton" Content="Add" Click="createButton_Click" Margin="10,200,0,383" />
-        </Grid>
-    </StackPanel>
+            <Button x:Name="createButton" Content="Add" Click="createButton_Click" />
+        </StackPanel>
+    </Grid>
 </Page>

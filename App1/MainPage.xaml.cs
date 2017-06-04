@@ -34,7 +34,7 @@ namespace App1
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            userList.ItemsSource = App.database.GetUsers();
+            usersList.ItemsSource = App.database.GetUsers();
         }
 
         private void ItemView_ItemClick(object sender, ItemClickEventArgs e)

@@ -81,7 +81,7 @@ namespace App1
 
         public void Update(User user)
         {
-            using (var statement = con.Prepare("UPDATE Users SET Name=?, Author=?, Year=? WHERE Id=?"))
+            using (var statement = con.Prepare("UPDATE Users SET login=?, pass=?, role=? WHERE Id=?"))
             {
                 statement.Bind(1, user.Login);
                 statement.Bind(2, user.Pass);
