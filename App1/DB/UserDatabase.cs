@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SQLitePCL;
 using System.Collections.ObjectModel;
 
-namespace App1
+namespace UserDB
 {
     
     public class UserDatabase

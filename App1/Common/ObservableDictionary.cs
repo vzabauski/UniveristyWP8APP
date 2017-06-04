@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Windows.Foundation.Collections;
 
-namespace App1.Common
+namespace UserDB.Common
 {
     /// <summary>
     /// Реализация интерфейса IObservableMap, поддерживающего повторный вход для использования в качестве модели представления

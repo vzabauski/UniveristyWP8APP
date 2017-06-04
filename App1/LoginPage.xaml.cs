@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 // Документацию по шаблону элемента пустой страницы см. по адресу http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace App1
+namespace UserDB
 {
     /// <summary>
     /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.

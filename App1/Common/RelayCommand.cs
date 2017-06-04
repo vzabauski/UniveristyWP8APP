@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace App1.Common
+namespace UserDB.Common
 {
     /// <summary>
     /// Команда, единственным назначением которой является передача собственной функциональности 

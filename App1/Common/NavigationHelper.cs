@@ -10,7 +10,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
-namespace App1.Common
+namespace UserDB.Common
 {
     /// <summary>
     /// Класс NavigationHelper облегчает навигацию между страницами.  Он предоставляет команды для 
