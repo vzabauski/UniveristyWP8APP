@@ -94,27 +94,7 @@ namespace App1
         /// <summary>
         /// Добавляет элемент в список при нажатии кнопки на панели приложения.
         /// </summary>
-        private void AddAppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            string groupName = this.pivot.SelectedIndex == 0 ? FirstGroupName : SecondGroupName;
-            var group = this.DefaultViewModel[groupName] as SampleDataGroup;
-            var nextItemId = group.Items.Count + 1;
-            var newItem = new SampleDataItem(
-                string.Format(CultureInfo.InvariantCulture, "Group-{0}-Item-{1}", this.pivot.SelectedIndex + 1, nextItemId),
-                string.Format(CultureInfo.CurrentCulture, this.resourceLoader.GetString("NewItemTitle"), nextItemId),
-                string.Empty,
-                string.Empty,
-                this.resourceLoader.GetString("NewItemDescription"),
-                string.Empty);
-
-            group.Items.Add(newItem);
-
-            // Прокручиваем, чтобы новый элемент оказался видимым.
-            var container = this.pivot.ContainerFromIndex(this.pivot.SelectedIndex) as ContentControl;
-            var listView = container.ContentTemplateRoot as ListView;
-            listView.ScrollIntoView(newItem, ScrollIntoViewAlignment.Leading);
-        }
-
+       
         /// <summary>
         /// Вызывается при нажатии элемента внутри раздела.
         /// </summary>
@@ -122,11 +102,8 @@ namespace App1
         {
             // Переход к соответствующей странице назначения и настройка новой страницы
             // путем передачи необходимой информации в виде параметра навигации
-            var itemId = ((SampleDataItem)e.ClickedItem).UniqueId;
-            if (!Frame.Navigate(typeof(ItemPage), itemId))
-            {
-                throw new Exception(this.resourceLoader.GetString("NavigationFailedExceptionMessage"));
-            }
+            var itemId = ((User)e.ClickedItem).Id;
+            Frame.Navigate(typeof(ItemPage), itemId);
         }
 
         /// <summary>
@@ -155,7 +132,7 @@ namespace App1
         /// событий, которые не могут отменить запрос навигации.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            this.navigationHelper.OnNavigatedTo(e);
+            userList.ItemsSource = App.database.GetUsers();
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -164,5 +141,10 @@ namespace App1
         }
 
         #endregion
+
+        private void createButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddPage));
+        }
     }
 }

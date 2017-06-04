@@ -32,10 +32,14 @@ namespace App1
         /// Инициализирует одноэлементный объект приложения. Это первая выполняемая строка разрабатываемого
         /// кода; поэтому она является логическим эквивалентом main() или WinMain().
         /// </summary>
+        public static UserDatabase database;
         public App()
         {
             this.InitializeComponent();
             this.Suspending += this.OnSuspending;
+
+            database = new UserDatabase("library.db");
+            database.CreateTable();
         }
 
         /// <summary>

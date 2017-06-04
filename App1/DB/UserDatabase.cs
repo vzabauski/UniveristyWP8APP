@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using SQLitePCL;
 using System.Collections.ObjectModel;
 
-namespace App1.DB
+namespace App1
 {
     
     public class UserDatabase
@@ -40,7 +40,7 @@ namespace App1.DB
             }
         }
 
-        public ObservableCollection<User> GetBooks()
+        public ObservableCollection<User> GetUsers()
         {
             ObservableCollection<User> users = new ObservableCollection<User>();
 
@@ -52,7 +52,7 @@ namespace App1.DB
                     user.Id = (long)statement[0];
                     user.Login = (string)statement[1];
                     user.Pass = (string)statement[2];
-                    user.Role = (long)statement[3];
+                    user.Role = (string)statement[3];
                     users.Add(user);
                 }
             }
@@ -72,7 +72,7 @@ namespace App1.DB
                     user.Id = (long)statement[0];
                     user.Login = (string)statement[1];
                     user.Pass = (string)statement[2];
-                    user.Role = (long)statement[3];
+                    user.Role = (string)statement[3];
                 }
             }
 
