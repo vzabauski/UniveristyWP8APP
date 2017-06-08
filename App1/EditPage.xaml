@@ -1,0 +1,24 @@
+﻿<Page
+    x:Class="UserDB.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UserDB"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Edit user" Style="{ThemeResource HeaderTextBlockStyle}" />
+            <TextBox x:Name="loginBox" PlaceholderText="Login" />
+            <TextBox x:Name="passwordBox" PlaceholderText="Password" />
+            <ComboBox x:Name="ComboBox1" PlaceholderText="User role">
+                <ComboBoxItem Content="user"/>
+                <ComboBoxItem Content="admin"/>
+            </ComboBox>
+            <Button x:Name="updateButton" Content="Apply" Click="updateButton_Click" />
+            <Button x:Name="backButton" Content="Back" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,291,0" Click="backButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

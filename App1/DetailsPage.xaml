@@ -20,6 +20,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button Content="Back" Click="Button_Click" />
                 <Button x:Name="deleteButton" Content="Delete" Click="Button_Click" IsEnabled="False" />
+                <Button x:Name="updateButton" Content="Update" Click="updateButton_Click" IsEnabled="False" />
             </StackPanel>
 
         </StackPanel>

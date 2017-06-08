@@ -5,27 +5,28 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.Phone.UI.Input;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-
-
+using Windows.UI.Popups;
 
 namespace UserDB
 {
-    public sealed partial class DetailsPage : Page
+    
+    public sealed partial class EditPage : Page
     {
-        public DetailsPage()
+        public EditPage()
         {
             this.InitializeComponent();
-            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
+            //HardwareButtons.BackPressed += HardwareButtons_BackPressed;
         }
 
+        /*
         void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
         {
             if (Frame.CanGoBack)
@@ -34,45 +35,41 @@ namespace UserDB
                 Frame.GoBack();
             }
         }
+        */
 
         public long Id { get; set; }
-
+        public User user = new User();
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (e.Parameter != null)
             {
                 long id = (long)e.Parameter;
-                User u = App.database.GetUser(id);
-                if (u != null)
+                user = App.database.GetUser(id);
+                if (user != null)
                 {
-                    loginBlock.Text = u.Login;
-                    passwordBlock.Text = u.Pass;
-                    roleBlock.Text = u.Role;
-                    deleteButton.IsEnabled = true;
+                    loginBox.Text = user.Login;
+                    passwordBox.Text = user.Pass;
                     updateButton.IsEnabled = true;
-                    Id = id;
                 }
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            if (button.Name == "deleteButton")
-                App.database.Delete(Id);
-
-            /*if (button.Name == "updateButton")
-            {
-                Frame.Navigate(typeof(EditPage), Id);
-            }
-            */
-            if (Frame.CanGoBack)
-                Frame.GoBack();
-        }
-
         private void updateButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(EditPage), Id);
+            if (!String.IsNullOrEmpty(loginBox.Text) && !String.IsNullOrEmpty(passwordBox.Text) && (((ComboBoxItem)ComboBox1.SelectedValue != null)))
+            {
+                user.Login = loginBox.Text;
+                user.Pass = passwordBox.Text;
+                user.Role = ((ComboBoxItem)ComboBox1.SelectedItem).Content.ToString();
+                App.database.Update(user);
+                MessageDialog msg = new MessageDialog("Succesfully updated");
+                Frame.GoBack();
+            }
+        }
+
+        private void backButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.GoBack();
         }
     }
 }
